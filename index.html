@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Interactive Resume</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Modal & Modal Templates -->
+    <div class="modal">
+        <article id="greeting" class="info">
+            <h1>Hi, my name is Michael and I'm a software developer. Welcome to my interactive resume!</h1>
+            <p>Somewhere on the page there's a place to type. Try to find it!</p>
+            <button class="close-button" onclick="closeModalAndSkip(this)">Skip tutorial</button>
+            <button onclick="closeModalAndSearch()">Okay!</button>
+        </article>
+    </div>
+
+    <template id="info1template">
+        <article id="info1" class="info">
+            <h1>You found it! Now, to write a little bit of code...</h1>
+            <p>A popular approach to writing code is to create data in the form of <em>objects</em> - entities which,
+                like
+                real-world objects (which they are often used to represent), have attributes and behaviours.</p>
+            <button onclick="navigateInfoPage(info1, skiptemplate)">I already know about objects</button>
+            <button onclick="navigateInfoPage(info1, info2template)">Tell me more...</button>
+        </article>
+    </template>
+
+    <template id="info1alttemplate">
+        <article id="info1alt" class="info">
+            <h1>Looks like you already found the input field! Now, to write a little bit of code...</h1>
+            <p>A popular approach to writing code is to create data in the form of <em>objects</em> - entities which,
+                like    
+                real-world objects (which they are often used to represent), have attributes and behaviours.</p>
+            <button onclick="navigateInfoPage(info1alt, skiptemplate)">I already know about objects</button>
+            <button onclick="navigateInfoPage(info1alt, info2template)">Tell me more...</button>
+        </article>
+    </template>
+
+    <template id="info2template">
+        <article id="info2" class="info">
+            <h1>An example...</h1>
+            <p>For instance, a programmer might create a Dog object to represent her dog, with a name and
+                colour (its attributes),
+                and the ability to (virtually) bark and wag its tail (its behaviours).
+            </p>
+            <button onclick="navigateInfoPage(info2, info1template)">Prev</button>
+            <button onclick="navigateInfoPage(info2, info3template)">Next</button>
+        </article>
+    </template>
+
+    <template id="info3template">
+        <article id="info3" class="info">
+            <h1>Methods</h1>
+            <p>The block of code responsible for each of an object's behaviours is known as a <em>method</em>.
+                We can make our dog bark by "calling" its bark method. We do this by writing the name of the variable
+                containing our dog object followed by a period and then the method name. E.g., </p>
+            <p><em class="code">fido.bark();</em></p>
+            <!-- <p>All method names start with a lowercase letter and end in parentheses "()" - <em class="code">bark()</em>, <em class="code">wagTail()</em> etc. All variable names (like "fido") start with lowercase letters too.</p> -->
+            <button onclick="navigateInfoPage(info3, info2template)">Prev</button>
+            <button onclick="navigateInfoPage(info3, info4template)">Next</button>
+        </article>
+    </template>
+
+    <template id="info4template">
+        <article id="info4" class="info">
+            <h1>The michaeljduncan object</h1>
+            <p>Behind the scenes, this webpage contains an object - representing me - stored in a variable, <em
+                    class="code">michaeljduncan</em>.</p>
+            <p>Shortly, when you close this window, you will be able to call its
+                methods (and see the results) by typing their names into the text field you found earlier.</p>
+            <button onclick="navigateInfoPage(info4, info3template)">Prev</button>
+            <button onclick="navigateInfoPage(info4, info5template)">Next</button>
+        </article>
+    </template>
+
+    <template id="skiptemplate">
+        <article id="skip" class="info">
+            <h1>The michaeljduncan object</h1>
+            <p>Behind the scenes, this webpage contains an object - representing me - stored in a variable, <em
+                    class="code">michaeljduncan</em>.</p>
+            <p>Shortly, when you close this window, you will be able to call its
+                methods (and see the results) by typing their names into the text field you found earlier.</p>
+            <button onclick="navigateInfoPage(skip, info1template)">Actually, tell me about objects first</button>
+            <button onclick="navigateInfoPage(skip, info5template)">Next</button>
+        </article>
+    </template>
+
+    <template id="info5template">
+        <article id="info5" class="info">
+            <h1>Try to work out the methods!</h1>
+            <p>The michaeljduncan object has the following attributes: </p>
+            <p><em class="attribute">info</em>,<em class="attribute">education</em>,<em class="attribute">skills</em>,<em class="attribute">projects</em>
+            </p>
+            <p>For each of these attributes, there is a method which prints information about that attribute to the
+                screen. Try to guess the method names, or click 'Help me get started' for some help.</p>
+            <button onclick="navigateInfoPage(info5, info4template)">Prev</button>
+            <button onclick="navigateInfoPage(info5, info6template)">Help me get started, please!</button>
+            <button onclick="displayTooltip(this)">I want to try on my own!</button>
+        </article>
+    </template>
+
+    <template id="info6template">
+        <article id="info6" class="info">
+            <h1>Getting started...</h1>
+            <p>Each of the methods involves printing information about michaeljduncan's attributes to the screen. Thus, their names each have the following form:</p>
+            <p><em class="code">printAttributename();</em></p>
+            <p>Try it yourself with the <em class="attribute">info</em> attribute. (Note the capitalisation, parentheses, and semi-colon!)</p>
+            <button onclick="navigateInfoPage(info6, info5template)">Prev</button>
+            <button onclick="navigateInfoPage(info6, info7template)">Give me a hint, please!</button>
+            <button onclick="displayTooltip(this)">Got it! I think I can manage from here</button>
+        </article>
+    </template>
+
+    <template id="info7template">
+        <article id="info7" class="info">
+            <h1>A hint:</h1>
+            <p>Try typing</p>
+            <p><em class="code">printInfo();</em></p>
+            <p>into the text field next to the logo after you close this window.</p>
+            <p>Once you've done that, you should be able to figure out how to print the other attributes (<em class="attribute">education</em>,<em class="attribute">skills</em>,<em class="attribute">projects</em>) 
+                on your own.</p>
+            <button onclick="navigateInfoPage(info7, info6template)">Prev</button>
+            <button onclick="displayTooltip(this)">Got it!</button>
+        </article>
+    </template>
+
+    <template id="tooltip-template">
+        <article id="tooltip1" class="tooltip">
+            <div class="arrow"></div>
+            <p>Good luck! If you get stuck, you can return to the tutorial by clicking on the logo above.</p>
+            <!-- <button onclick="closeTooltip(tooltip1)">Got it!</button> -->
+            <button class="close-button" onclick="closeTooltip(this)">&#10005;</button>
+        </article>
+    </template>
+
+    <template id="download-page-template">
+        <article class="download-page info">
+            <h2>Downloading ?<span class="small-dot dot1">.</span><span class="small-dot dot2">.</span><span class="small-dot dot3">.</span></h2>
+            <span class="download-bar">
+                <span class="progress-bar"></span>
+            </span>
+            <div class="percent">x%</div>
+            <button class="close-button" onclick="closeDownloadPage()">&#10005;</button>
+        </article>
+    </template>
+
+    <header>
+        <nav>
+            <span id="logo-container">
+                <span class="logo" onclick="closeTooltip(this)">michael<span class="j spectrum">j</span>duncan</span><span class="dot">.</span>
+            </span>
+            <span>
+                <input type="text" maxlength="17" spellcheck="false" onkeyup="processInput(event, this)" onfocus="closeTooltip(this)"></input>
+            </span>
+        </nav>
+    </header>
+
+    <main>
+    </main>
+
+
+    <!-- Print Templates -->
+    <!-- Education -->
+    <template id="education-template">
+        <p class="heading-para"><span class="heading1-tag">&lt;h1&gt;</span>Education<span
+                class="heading1-tag">&lt;/h1&gt;</span></p>
+    </template>
+
+    <template id="degree-template">
+        <p class="degree-name"><span class="heading2-tag">&lt;h2&gt;</span>Degree Name<span class="heading2-tag">&lt;/h2&gt;</span></p>
+        <p class="uni-name"><span class="para-tag">&lt;p&gt;</span>University Name<span class="para-tag">&lt;/p&gt;</span></p>
+        <p class="year"><span class="para-tag">&lt;p&gt;</span>Years<span class="para-tag">&lt;/p&gt;</span></p>
+    </template>
+
+    <!-- Info -->
+    <template id="info-template">
+        <p class="heading-para"><span class="heading1-tag">&lt;h1&gt;</span>About Me<span class="heading1-tag">&lt;/h1&gt;</span></p>
+        <p class="info-para"><span class="para-tag">&lt;p&gt;</span>info<span class="para-tag">&lt;/p&gt;</span></p>
+        <p class="email"><span class="anchor-tag">&lt;a&gt;</span><a>email</a><span class="anchor-tag">&lt;/a&gt;</span></p>
+        <p class="linkedin"><span class="anchor-tag">&lt;a&gt;</span><a href="https://www.linkedin.com/in/mjduncan17" target="_blank">LinkedIn</a><span class="anchor-tag">&lt;/a&gt;</span></p>
+        <p class="github"><span class="anchor-tag">&lt;a&gt;</span><a href="https://github.com/fugu137" target="_blank">GitHub</a><span class="anchor-tag">&lt;/a&gt;</span></p>
+        <p class="resume"><span class="anchor-tag">&lt;a&gt;</span><a onclick="displayDownloadBar('resume', 'resume.pdf')">resume.pdf</a><span class="anchor-tag">&lt;/a&gt;</span></p>
+    </template>
+
+    <!-- Skills -->
+    <template id="skills-template">
+        <p class="heading-para"><span class="heading1-tag">&lt;h1&gt;</span>Skills<span class="heading1-tag">&lt;/h1&gt;</span></p>
+        <p class="skill-type languages"><span class="heading2-tag">&lt;h2&gt;</span>Languages<span class="heading2-tag">&lt;/h2&gt;</span></p>
+        <p class="skill-type frameworks"><span class="heading2-tag">&lt;h2&gt;</span>Frameworks & Libraries<span class="heading2-tag">&lt;/h2&gt;</span></p>
+    </template>
+
+    <template id="language-item-template">
+        <p class="language-item"><span class="li-tag">&lt;li&gt;</span>language item<span class="li-tag">&lt;/li&gt;</span></p>
+    </template>
+    <template id="framework-item-template">
+        <p class="framework-item"><span class="li-tag">&lt;li&gt;</span>framework item<span class="li-tag">&lt;/li&gt;</span></p>
+    </template>
+
+    <!-- Projects -->
+    <template id="portfolio-template">
+        <p class="heading-para"><span class="heading1-tag">&lt;h1&gt;</span>Projects<span class="heading1-tag">&lt;/h1&gt;</span></p></p>
+    </template>
+
+    <template id="project-template">
+        <p class="project-name"><span class="heading2-tag">&lt;h2&gt;</span><a class="link">Project Name</a><span class="heading2-tag">&lt;/h2&gt;</span></p>
+        <p class="project-description"><span class="para-tag">&lt;p&gt;</span>project description<span class="para-tag">&lt;/p&gt;</span></p>
+        <p class="project-specs"><span class="ul-tag">&lt;ul&gt;</span>project specs<span class="ul-tag">&lt;/ul&gt;</span></p>
+        <!-- <p class="project-url"><span class="anchor-tag">&lt;a&gt;</span>project link<span class="anchor-tag">&lt;/a&gt;</span></p> -->
+    </template>
+
+    <!-- Error Messages -->
+    <template id="error-template">
+        <h2 class="error-message">Method name does not exist!</h2>
+        <article class="hint-container">
+            <span class="hint-label">Hint: </span><span class="hint" onclick="this.classList.add('selected')">hint text</span>
+        </article>
+    </template>
+
+    <script type="text/javascript" src="script.js" charset="utf-8"></script>
+</body>
+
+</html>

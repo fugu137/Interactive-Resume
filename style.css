@@ -1,0 +1,746 @@
+:root {
+    /* Hues */
+    --hue-deeporange: 25;
+    --hue-yellow: 60;
+    --hue-green: 120;
+    --hue-lightgreen: 150;
+    --hue-lightblue: 200;
+    --hue-pink: 330;
+    --hue-violet: 240;
+    --hue-orange: 40;
+    --hue-red: 0;
+
+    /* Saturation and Lightness Defaults*/
+    --s-high: 100%;
+    --s-mid-high: 70%;
+    --s-mid-low: 30%;
+    --s-low: 5%;
+
+    --l-high: 90%;
+    --l-mid-high: 70%;
+    --l-mid-low: 50%;
+    --l-mid-lower: 35%;
+    --l-low: 10%;
+
+    /* Colour Palette ("res" for "resume")*/
+    --res-orange: var(--hue-deeporange), var(--s-high), var(--l-mid-high);
+    --res-yellow: var(--hue-yellow), var(--s-high), var(--l-mid-high);
+    --res-lightgreen: var(--hue-lightgreen), var(--s-high), var(--l-mid-high);
+    --res-lightblue: var(--hue-lightblue), var(--s-high), var(--l-mid-high);
+    --res-pink: var(--hue-pink), var(--s-high), var(--l-mid-high);
+    --res-violet: var(--hue-violet), var(--s-high), var(--l-mid-high);
+    --res-gold: var(--hue-orange), var(--s-high), var(--l-mid-high);
+
+    --res-red: var(--hue-red), var(--s-mid-high), var(--l-mid-low);
+    --res-darkgreen: var(--hue-green), var(--s-high), var(--l-mid-lower);
+    --res-darkviolet: var(--hue-violet), var(--s-high), var(--l-mid-lower);
+    --res-midblue: var(--hue-lightblue), var(--s-mid-high), var(--l-mid-low);
+    --res-dullorange: var(--hue-orange), var(--s-mid-high), var(--l-mid-low);
+    --res-violetgrey: var(--hue-violet), var(--s-low), var(--l-mid-low);
+    --res-lightgold: var(--hue-orange), var(--s-mid-low), var(--l-high);
+    --res-darkerlightgold: var(--hue-orange), var(--s-mid-low), var(--l-mid-lower);
+    --res-brightgreen: var(--hue-green), var(--s-mid-low), var(--l-high);
+    --res-yellowwhite: var(--hue-yellow), var(--s-mid-low), var(--l-high);
+    
+    --res-nearblack: var(--hue-violet), 0%, var(--l-low);
+    --res-nearwhite: var(--hue-red), var(--s-low), var(--l-high);
+
+    /* Colour Variables */
+    --logo-color-1: hsla(var(--res-lightgreen), 1);
+    --logo-color-2: hsla(var(--res-lightblue), 1);
+    --logo-color-3: hsla(var(--res-pink), 1);
+    --logo-color-4: hsla(var(--res-orange), 1);
+    --logo-color-5: hsla(var(--res-yellow), 1);
+    --logo-text-color: white;
+    --logo-dot-color: gold;
+
+    --background-color: hsla(var(--res-nearblack), 1);
+    --modal-background-color: hsla(var(--res-brightgreen), 0.07);
+
+    --text-main-color: hsla(var(--res-nearwhite), 1);
+    --text-bright-color: white;
+    --text-dark-color: hsla(var(--res-nearblack), 1);
+    --text-unvalidated-color: hsla(var(--res-violetgrey), 1);
+    --text-validated-color: hsla(var(--res-dullorange), 1);
+    --text-error-color: hsla(var(--res-red), 0.8);
+    --text-special-color: hsla(var(--res-gold), 0.5);
+    
+    --caret-color: hsla(var(--res-orange), 0.8);
+
+    --highlight-color-1: hsla(var(--res-darkgreen), 0.1);
+    --highlight-color-2: hsla(var(--res-darkviolet), 0.1);
+
+    --downloadbar-color: var(--logo-color-3);
+
+    --link-color: var(--text-main-color);
+    --link-visited-color: hsla(var(--res-yellowwhite), 1);
+    --link-hover-color: hsla(var(--res-yellow), 1);
+    --link-active-color: var(--text-main-color);
+    --link-visited-hover-color: hsla(var(--res-yellow), 1);
+    --link-visited-active-color: hsla(var(--res-yellow), 0.9);
+
+    --h1-tag-color: hsla(var(--res-gold), 0.35);
+    --h2-tag-color: hsla(var(--res-pink), 0.35);
+    --p-tag-color: hsla(var(--res-violet), 0.45);
+    --a-tag-color: hsla(var(--res-red), 0.4);
+    --ul-tag-color: hsla(var(--res-violetgrey), 0.55);
+    --li-tag-color: var(--p-tag-color);
+
+    --button-color: hsla(var(--res-nearblack), 0.1);
+    --button-border-color: hsla(var(--res-violetgrey), 1);
+    --button-border-hover-color: hsla(var(--res-midblue), 1);
+    --button-hover-color: hsla(var(--res-midblue), 0.1);
+    --button-active-color: hsla(var(--res-midblue), 0.25);
+    --close-button-color: transparent;
+
+    --shadow-color: hsla(var(--res-nearwhite), 1);
+
+    /* Fonts */
+    --font-primary: "Consolas", monospace;
+}
+
+* {
+    font-size: 0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-margin-bottom: 40px;
+}
+
+html, body {
+    min-height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--background-color);
+    align-items: center;
+    height: 100%;
+}
+
+body * {
+    font-family: var(--font-primary);
+}
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: auto;
+    z-index: 1;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: var(--background-color);
+}
+
+nav {
+    height: auto;
+    width: 100%;
+    padding: 15px 0;
+    display: flex;
+    flex-direction: column;
+    row-gap: 6px;
+    justify-content: center;
+    align-items: center;
+}
+
+nav * {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+#logo-container {
+    position: relative;
+}
+
+nav .logo {
+    position: relative;
+    color: var(--logo-text-color);
+    cursor: pointer;
+    user-select: none;
+}
+
+nav .logo:active {
+    transform: scale(0.99);
+}
+
+nav .j {
+    color: var(--logo-color-1);
+}
+
+nav .j.spectrum {
+    animation: color-cycle 36s infinite;
+}
+
+nav .dot {
+    display: inline-block;
+    color: var(--logo-dot-color);
+}
+
+nav input {
+    font-size: 22px;
+    display: inline-block;
+    border: none;
+    outline: none;
+    color: var(--text-unvalidated-color);
+    background-color: var(--background-color);
+    width: auto;
+    caret-color: var(--caret-color);
+}
+
+nav input.validated {
+    color: var(--text-validated-color);
+}
+
+nav input::selection {
+    background-color: var(--logo-color-5);
+    color: var(--logo-color-2);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-top: 128px;
+    width: 100%;
+    height: auto;
+    line-height: 1.5;
+    align-items: center;
+    padding: 0 20px 40px 20px;
+}
+
+main * {
+    font-size: 16px;
+    font-weight: 100;
+    color: var(--text-main-color);
+    user-select: none;
+}
+
+main p {
+    visibility: hidden;
+    text-align: center;
+    width: 100%;
+    max-width: 35em;
+    /* max-width: 1000px; */
+    line-height: 1.5;
+}
+
+/* 
+main p:focus {
+    background-color: lightyellow;
+} */
+
+main .heading-para {
+    margin-bottom: 30px;
+}
+
+main .email {
+    margin-top: 40px;
+}
+
+main a {
+    text-decoration: underline;
+}
+
+main .resume a {
+    cursor: pointer;
+}
+
+/* 
+main a:visited {
+    color: var(--link-visited-color);
+} */
+
+/* main a:hover {
+    text-decoration: underline;
+} */
+
+main .degree-name {
+    margin-bottom: 5px;
+}
+
+main .year, main .project-specs:not(:last-of-type) {
+    margin-bottom: 40px;
+}
+
+main .project-name {
+    margin-bottom: 10px;
+}
+
+main .project-name a {
+    color: var(--link-color);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+}
+
+main .project-name a:hover {
+    color: var(--link-visited-hover-color);
+}
+
+main .project-name a:active {
+    text-decoration: underline;
+    color: var(--link-active-color);
+}
+
+main .project-name a:visited {
+    color: var(--link-visited-color);
+}
+
+main .project-name a:visited:hover {
+    color: var(--link-visited-hover-color);
+}
+
+main .project-name a:visited:active {
+    color: var(--link-visited-active-color);
+}
+
+main .project-specs {
+    margin-top: 8px;
+}
+
+main .skill-type {
+    margin-bottom: 10px;
+}
+
+main .skill-type~.skill-type {
+    margin-top: 30px;
+}
+
+main .heading1-tag {
+    color: var(--h1-tag-color);
+    margin-bottom: 40px;
+    margin: 0 1px;
+}
+
+main .heading2-tag {
+    color: var(--h2-tag-color);
+    margin: 0 1px;
+}
+
+main .para-tag {
+    color: var(--p-tag-color);
+    margin: 0 1px;
+}
+
+main .ul-tag {
+    color: var(--ul-tag-color);
+    margin: 0 1px;
+}
+
+main .li-tag {
+    color: var(--li-tag-color);
+    margin: 0 1px;
+}
+
+main .anchor-tag {
+    color: var(--a-tag-color);
+    margin: 0 1px;
+}
+
+main .error-message {
+    color: var(--text-error-color);
+    margin-bottom: 20px;
+}
+
+main .hint-container {
+    display: flex;
+    padding: 0 30px;
+    column-gap: 5px;
+}
+
+main .hint-label {
+    color: var(--text-unvalidated-color);
+    padding: 2px 0;
+}
+
+main .hint {
+    background-color: var(--background-color-dark);
+    padding: 2px 0;
+    color: transparent;
+    user-select: none;
+    cursor: pointer;
+}
+
+main .hint.selected {
+    background-color: transparent;
+    color: var(--text-special-color);
+}
+
+.modal {
+    position: absolute;
+    display: flex;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: var(--modal-background-color);
+    z-index: 2;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.info {
+    font-size: 16px;
+    background-color: white;
+    height: auto;
+    max-width: 35em;
+    margin: 0 20px;
+    transform: translate(0, -5vh);
+    padding: 20px 10px;
+    text-align: center;
+    box-shadow: 1px 1px 5px 2px black;
+    line-height: 1.4;
+}
+
+.info h1 {
+    font-size: 16px;
+    color: black;
+    margin-bottom: 5px;
+}
+
+.info p {
+    font-size: 15px;
+    color: black;
+    margin-bottom: 10px;
+}
+
+.info p:not(:last-of-type) {
+    margin-bottom: 5px;
+}
+
+.info p em {
+    font-size: 15px;
+}
+
+em.code {
+    font-style: normal;
+    background-color: var(--highlight-color-1);
+    padding: 0 4px;
+}
+
+em.attribute {
+    font-style: normal;
+    background-color: var(--highlight-color-2);
+    padding: 0 4px;
+}
+
+.info button {
+    display: inline-block;
+    font-size: 13px;
+    padding: 3px 5px;
+    margin: 10px 5px 0 5px;
+    border: 1px solid var(--button-border-color);
+    background-color: var(--button-color);
+}
+
+/* 
+.info button:not(:first-of-type) {
+    margin-left: 20px;
+} */
+
+.info button:disabled {
+    opacity: 0.6;
+}
+
+.info button:hover {
+    border: 1px solid var(--button-border-hover-color);
+    background-color: var(--button-hover-color);
+}
+
+.info button:active, .info button:focus {
+    background-color: var(--button-active-color);
+}
+
+.close-button:focus-visible {
+    outline: none;
+}
+
+.download-page h2, .download-page .small-dot {
+    font-size: 16px;
+    color: var(--text-dark-color);
+}
+
+.download-page h2 {
+    transition-delay: 1s;
+}
+
+.download-page .close-button {
+    font-size: 12px;
+    padding: 1px;
+    border: none;
+    width: 14px;
+    height: 14px;
+    line-height: 0px;
+    text-align: center;
+    background-color: var(--close-button-color);
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 8px;
+}
+
+.download-bar {
+    display: flex;
+    width: 250px;
+    height: 15px;
+    border: 1px solid var(--button-border-color);
+    padding: 1px;
+    margin: 15px 10px 5px 10px;
+    justify-content: left;
+}
+
+.download-bar .progress-bar {
+    display: inline-block;
+    width: 0;
+    height: 100%;
+    background-color: var(--downloadbar-color);
+}
+
+.download-page .percent {
+    font-size: inherit;
+}
+
+.small-dot.animated {
+    opacity: 0;
+    animation-name: fade-in;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-duration: 2s;
+}
+
+.small-dot.dot1 {
+    animation-delay: 0s;
+}
+
+.small-dot.dot2 {
+    animation-delay: 0.5s;
+}
+
+.small-dot.dot3 {
+    animation-delay: 1s;
+}
+
+.tooltip {
+    position: absolute;
+    background-color: var(--background-color);
+    z-index: 1;
+    top: 200%;
+    left: 50%;
+    margin-left: -75%;
+    width: 150%;
+    padding: 10px;
+    text-align: center;
+    animation: bob 2s ease-in-out infinite;
+    box-shadow: 0 0 2px 0 var(--shadow-color);
+}
+
+.tooltip p {
+    font-size: 15px;
+    color: var(--text-bright-color);
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.tooltip button {
+    display: inline-block;
+    font-size: 12px;
+    margin-left: auto;
+    margin-right: auto;
+    color: var(--text-main-color);
+}
+
+.tooltip button:hover {
+    opacity: 0.85;
+}
+
+.tooltip button:active {
+    color: var(--text-bright-color);
+}
+
+.tooltip .close-button {
+    background-color: var(--close-button-color);
+    padding: 2px;
+    border: none;
+    width: 12px;
+    height: 12px;
+    line-height: 0px;
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.tooltip .arrow {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    width: 18px;
+    height: 18px;
+    background-color: var(--background-color);
+    transform: translate(-50%, 60%) rotate(45deg);
+    box-shadow: -1px -1px 1px -1px var(--shadow-color);
+    z-index: 2;
+}
+
+@media (hover: hover) {
+    main a {
+        text-decoration: none;
+    }
+    main a:hover {
+        text-decoration: underline;
+    }
+}
+
+@media screen and (min-width: 500px) {
+    nav * {
+        font-size: 28px;
+    }
+    nav {
+        row-gap: 8px;
+    }
+    nav input {
+        font-size: 27px;
+    }
+    header {
+        padding-top: 25px;
+        padding-bottom: 25px;
+    }
+    main {
+        margin-top: 160px;
+    }
+    main * {
+        font-size: 19px;
+    }
+    main .project-specs {
+        margin-top: 12px;
+    }
+    main .hint {
+        background-color: var(--background-color-dark);
+        padding: 2px 0 2px 4px;
+    }
+    .info {
+        font-size: 18px;
+        line-height: 1.5;
+        padding: 20px 25px;
+        transform: translate(0, -15vh);
+    }
+    .info h1 {
+        font-size: 18px;
+    }
+    .info p {
+        font-size: 16px;
+    }
+    .info p:not(:last-of-type) {
+        margin-bottom: 10px;
+    }
+    .info p em {
+        font-size: 16px;
+    }
+    .info button {
+        font-size: 15px;
+        padding: 3px 6px;
+    }
+    .download-page h2, 
+    .download-page .small-dot {
+        font-size: 18px;
+    }
+    .download-bar {
+        font-size: 18px;
+        width: 55vw;
+        max-width: 30em;
+    }
+    .download-page .close-button {
+        font-size: 14px;
+        width: 16px;
+        height: 16px;
+    }
+    .tooltip p {
+        font-size: 16px;
+        margin-bottom: 22px;
+    }
+    .tooltip button {
+        font-size: 14px;
+        margin-top: 10px;
+    }
+    .tooltip .close-button {
+        width: 14px;
+        height: 14px;
+    }
+}
+
+@media screen and (min-width: 640px) {
+    header {
+        padding-top: 50px;
+    }
+    nav {
+        flex-direction: row;
+    }
+    nav input {
+        width: 252px;
+    }
+}
+
+@media screen and (min-width: 1500px) {
+    nav * {
+        font-size: 32px;
+    }
+    nav input {
+        font-size: 29px;
+        width: 275px;
+    }
+    header {
+        padding-top: 60px;
+    }
+    main {
+        margin-top: 180px;
+    }
+    main .heading-para {
+        margin-bottom: 40px;
+    }
+}
+
+@keyframes color-cycle {
+    0% {
+        color: var(--logo-color-1);
+    }
+    20% {
+        color: var(--logo-color-2);
+    }
+    40% {
+        color: var(--logo-color-3);
+    }
+    60% {
+        color: var(--logo-color-4);
+    }
+    80% {
+        color: var(--logo-color-5);
+    }
+    100% {
+        color: var(--logo-color-1);
+    }
+}
+
+@keyframes bob {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(12px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
