@@ -54,8 +54,8 @@ const michaeljduncan = {
         new Project(
             "Tutor Finder Web App",
             "https://github.com/fugu137/Tutor-Finder_demo",
-            "A demo web application which allows students to find tutors.",
-            ["Java", "Spring Boot", "JavaScript", "HTML", "CSS", "Apache Tomcat Server"]
+            "A demo web application which allows students to find tutors. Add and remove tutors, filter by subject, load more profiles (pagination).",
+            ["Java", "Spring Boot", "MySQL", "JavaScript", "HTML", "CSS", "Apache Tomcat Server"]
         ),
         new Project(
             "DVD-rip to MKV Converter",
